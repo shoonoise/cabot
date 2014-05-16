@@ -32,6 +32,7 @@ telephone_template = "This is an urgent message from Arachnys monitoring. Servic
 
 def send_alert(service, duty_officers=None):
     users = service.users_to_notify.all()
+    logger.info("Send alert to %s" % users)
     if service.email_alert:
         send_email_alert(service, users, duty_officers)
     if service.hipchat_alert:
